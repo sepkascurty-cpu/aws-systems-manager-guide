@@ -17,6 +17,10 @@
 
 ---
 
+## 🌍 In plain words — what is this, really?
+
+Imagine you are in charge of a warehouse with hundreds of rooms, and instead of walking to every room with a key whenever something needs fixing, you sit at one control desk with a master panel. From that desk you can check what is stored in every room, send the same instruction to all rooms at once, schedule regular cleaning and repairs, and open a single room's door remotely without ever leaving the desk or handing out copies of the master key. That control desk is Systems Manager for your fleet of servers: the SSM Agent installed on each machine listens for your instructions over a secure connection, so you never need to open SSH or keep a bastion server. Run Command sends one order to hundreds of instances, Patch Manager handles scheduled updates like a maintenance calendar, and Parameter Store is the labelled cabinet where configuration values and secrets are kept. Session Manager is the remote door-opening part — a shell into one machine, fully logged, with no port 22 left open. Everything is tied to IAM permissions and recorded, so you know exactly who did what, and where.
+
 ## 🧩 The Capabilities, in One Picture
 
 | Capability | What it does | Think of it as |
@@ -139,12 +143,6 @@ Or do it in Python — see [`systems_manager_demo.py`](systems_manager_demo.py) 
 - **Parameter Store free tier limits** — Standard parameters are free (up to 10,000) but cap at 4 KB; Advanced parameters cost money and allow 8 KB + policies. Don't store big blobs here — use S3 + a pointer.
 - **Run Command timeouts** — default timeout is 3,600 s per invocation; long scripts need `--timeout-seconds` raised or split into Automation steps.
 - **Patching the database tier with the web tier** — separate patch groups and windows; a rebooted DB mid-traffic is a very bad morning.
-
----
-
-## 📝 Quiz
-
-Think you know it? Five questions in [`quiz.md`](quiz.md) — including the classic "why did my private-subnet instance never show up in Fleet Manager?"
 
 ---
 
